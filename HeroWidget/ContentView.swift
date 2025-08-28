@@ -14,12 +14,18 @@ struct ContentView: View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 12) {
                 ForEach(superHeroArray) { hero in
-                    HeroView(hero: hero)
+                    HeroView(hero: hero).onTapGesture {
+                        saveToDefaults(hero: hero)
+                    }
                 }
             }
             .padding(.horizontal)
             .padding(.vertical, 8)
         }
+    }
+    
+    func saveToDefaults(hero: SuperHero) {
+        print(hero.name)
     }
 }
 
